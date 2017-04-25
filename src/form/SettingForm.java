@@ -192,11 +192,15 @@ public class SettingForm {
        lblStudentID.setText("");
        int total =0;
        for(int i=0;i<bookCount.size();i++){
+    	   if(bookCount.get(i).name.length()<12)
+    		   lblStudentID.append(" - "+bookCount.get(i).name + "\t\t" + bookCount.get(i).qty+"\n");
+    	   else
     	   lblStudentID.append(" - "+bookCount.get(i).name + "\t" + bookCount.get(i).qty+"\n");
+    	   
     	   total +=bookCount.get(i).qty;
        }
        
-       lblStudentID.append("TOTAL BOOKS : "+total);
+       lblStudentID.append(" - Total book : \t"+total);
        
        dialog.add(frame);
        dialog.setModal(true);

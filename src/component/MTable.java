@@ -57,7 +57,7 @@ public class MTable extends JScrollPane{
 	
 	public void setAutoResizeWidth(){
 		table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
-		 int indent=5;
+		 int indent=2;
 
         for (int column = 0; column < table.getColumnCount(); column++)
         {
