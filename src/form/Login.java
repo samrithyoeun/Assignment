@@ -58,8 +58,14 @@ public class Login {
 	       
 	        	if(u!=null){
 	        		if(u.type.contains("admin")){
-	        			mainscreen.show();
+	        			u.type="busy";
+	        			db.Update(u);
+	        			mainscreen.show(u);
+	        		
 		        		login.dispose();
+	        		}
+	        		else if(u.type.contains("busy")){
+	        			MOptionPane.show(null, "Admin account is already in used");
 	        		}
 	        		else if(u.type.contains("guest")){
 	        			BookForm bf = new BookForm();
@@ -86,9 +92,5 @@ public class Login {
 		}
 		
     }
-
-public static void main(String arg[]){
-	new Login().login();
-}
     
 }

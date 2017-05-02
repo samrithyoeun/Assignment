@@ -274,14 +274,14 @@ public class MemberForm {
             case 1:
                 //search by name
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getName().contains(txtSearch.getText()))
+                    if(list.get(i).getName().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                 }
                 break;
             case 2:
                 //search by id
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getCardID().contains(txtSearch.getText()))
+                    if(list.get(i).getCardID().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                     }
                 
@@ -289,21 +289,21 @@ public class MemberForm {
             case 3:
                 //search by gender
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getGender().contains(txtSearch.getText()))
+                    if(list.get(i).getGender().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                 }
                 break;
             case 4:
                 //search by register date
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getRegisterDate().contains(txtSearch.getText()))
+                    if(list.get(i).getRegisterDate().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                 }
                 break;
             case 5:
                 //search by expire date
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getExpireDate().contains(txtSearch.getText()))
+                    if(list.get(i).getExpireDate().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                     }
                 break;

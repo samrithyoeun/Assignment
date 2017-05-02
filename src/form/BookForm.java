@@ -298,14 +298,14 @@ public class BookForm {
             case 1:
                 //search by title
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getTitle().contains(txtSearch.getText()))
+                    if(list.get(i).getTitle().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                 }
                 break;
             case 2:
                 //search by ISBN
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getIsbn().contains(txtSearch.getText()))
+                	if(list.get(i).getIsbn().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                     }
                 
@@ -313,14 +313,14 @@ public class BookForm {
             case 3:
                 //search by Category
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getCategory().contains(txtSearch.getText()))
+                	if(list.get(i).getCategory().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                 }
                 break;
             case 4:
                 //search by Author
                 for(int i=0;i<list.size();i++){
-                    if(list.get(i).getAuthor().contains(txtSearch.getText()))
+                	if(list.get(i).getAuthor().toLowerCase().contains(txtSearch.getText().toLowerCase()))
                         found.add(list.get(i).GetData());
                 }
                 break;

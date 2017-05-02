@@ -17,21 +17,6 @@ public class Database {
 	
 	static int limitedBook;
 	
-	public static void main(String arg[]){
-		Database data = new Database();
-		Member member =new Member(4,"YOEUN SAMRITH","1292","Male","2017-05-05","2018-05-05","010532524","samrith.yoeun@gmail.com","Chbar Ampov, Phnom penh" );
-		Book book = new Book(10,"C# programming","22","A201","samrith yoeun","hell","english","2nd edition",10);
-		Borrow borrow = new Borrow(0,1,1,"2017-04-03","2017-04-10",1);
-		Return returns = new Return(0,1,1,"2017-04-03","2017-04-10",1,0.3);
-		
-		Member member1 =new Member(1,"XXYOEUN SAMRITH","12345678","Male","2017-05-05","2018-05-05","010532524","samrith.yoeun@gmail.com","Chbar Ampov, Phnom penh" );
-		Book book1 = new Book(1,"XXC# programming","234568780","A201","samrith yoeun","hell","english","2nd edition",10);
-		Borrow borrow1 = new Borrow(1,1,1,"2017-04-03","2017-04-10",33);
-		Return returns1 = new Return(1,1,1,"2017-04-03","2017-04-10",33,0.3);
-		
-		data.connect();
-		System.out.print(data.getMemberCount().get(1).qty+"");	
-	}
 	
 	public boolean connect(){
 
@@ -337,7 +322,16 @@ public class Database {
 	                      stmt.setDouble(3, s.fine);
 	                      stmt.setInt(4,1);
 				 }
-				 
+
+				 else if (object.getClass()==User.class){
+	                    User s = (User)object;
+	                    sql = "UPDATE users SET Type=? WHERE UserID=?";
+	                      stmt = connection.prepareStatement(sql);
+	                      stmt.setString(1,s.type);
+	                      stmt.setInt(2,s.id);
+	                      
+				 }
+	
 				  
 			       rows = stmt.executeUpdate();
 			      
@@ -665,6 +659,7 @@ public class Database {
 				while(rss.next()){
 					u=new User();
 					u.type= rss.getString("Type");
+					u.id = rss.getInt("UserID");
 										
 				}
 				}

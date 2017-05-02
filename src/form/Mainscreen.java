@@ -3,6 +3,8 @@ package form;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import component.*;
 import data.Database;
 import data.Setting;
+import data.User;
 
 public class Mainscreen {
 	MLabel title;
@@ -46,8 +49,9 @@ public class Mainscreen {
     
 	
 	
-	public void show(){
+	public void show(User user){
 	
+		
 		JFrame frame = new JFrame();
 		frame.setSize(1200,600);
 		frame.setLocationRelativeTo(null);
@@ -214,6 +218,8 @@ public class Mainscreen {
 		data.connect();
 		Setting s=data.getSetting();
 		
+		
+		
 		about.addActionListener(e->{
 			if(about.getText().contains("GO BACK")){
 				cardLayout.show(cardPanel, "mainPanel");
@@ -268,7 +274,54 @@ public class Mainscreen {
 		frame.add(title,BorderLayout.NORTH);
 		frame.setVisible(true);
 		
-		
+		frame.addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				user.type ="admin";
+				if(data.Update(user)>0){
+					MOptionPane.show(null, "Change");
+				};
+				
+				
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 	
